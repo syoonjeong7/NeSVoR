@@ -10,9 +10,50 @@ apptainer exec --nv "/neuro/labs/grantlab/research/Apptainer/nesvor:v0.6.0rc2.si
 >> pip install monai
 >> pip install --upgrade nibabel
 
+apptainer exec --nv "/neuro/labs/grantlab/research/Apptainer/nesvor:v0.6.0rc2.sif" \
+  nesvor reconstruct \
+  --input-stacks \
+    ${file}/sub-CC00882XX17_ses-731_run-08_T2w.nii \
+    ${file}/sub-CC00882XX17_ses-731_run-09_T2w.nii \
+    ${file}/sub-CC00882XX17_ses-731_run-10_T2w.nii \
+    ${file}/sub-CC00882XX17_ses-731_run-11_T2w.nii \
+    ${file}/sub-CC00882XX17_ses-731_run-12_T2w.nii \
+    ${file}/sub-CC00882XX17_ses-731_run-13_T2w.nii \
+  --thicknesses 2.2 2.2 2.2 2.2 2.2 2.2 \
+  --output-volume ${file}/recon_thick2p2.nii \
+  --output-resolution 0.5 \
+  --registration stack
+
 CF) 
 ## IRTK 
 /neuro/arch/Linux64/packages/irtk/build-tbb/bin/reconstruction ${file}/recon_irtk.nii 18 ${file}/nuc/CERVIX_T2_HASTE_with_prescan_ON-CERVIX_T2_HASTE_with_prescan_ON-425455_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425456_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425457_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425458_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425459_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425460_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425461_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425462_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425463_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425464_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425465_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425466_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425467_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425468_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425469_brain.nii ${file}/nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425470_brain.nii ${file}/nuc/T2_HASTE_for_SVS__ax_to_fetal_brain_-T2_HASTE_for_SVS__ax_to_fetal_brain_-425471_brain.nii ${file}/nuc/T2_HASTE_for_SVS__ax_to_fetal_brain_-T2_HASTE_for_SVS__ax_to_fetal_brain_-425472_brain.nii id id id id id id id id id id id id id id id id id id -resolution 0.5
 
 ## SVRTK
 run_cmd='mirtk reconstruct /neuro/labs/grantlab/research/MRI_processing/seungyoon.jeong/2024/NewModel_test/FCB056/2015.08.05-034Y-MR_EI_Fetal_Neuro-29177/recon_svrtk.nii 18  nuc/CERVIX_T2_HASTE_with_prescan_ON-CERVIX_T2_HASTE_with_prescan_ON-425455_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425456_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425457_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425458_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425459_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425460_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425461_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425462_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425463_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425464_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425465_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425466_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425467_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425468_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425469_brain.nii  nuc/T2_HASTE_CAT4_lowSAR-T2_HASTE_CAT4_lowSAR-425470_brain.nii  nuc/T2_HASTE_for_SVS__ax_to_fetal_brain_-T2_HASTE_for_SVS__ax_to_fetal_brain_-425471_brain.nii  nuc/T2_HASTE_for_SVS__ax_to_fetal_brain_-T2_HASTE_for_SVS__ax_to_fetal_brain_-425472_brain.nii -mask /neuro/labs/grantlab/research/MRI_processing/seungyoon.jeong/2024/NewModel_test/FCB056/2015.08.05-034Y-MR_EI_Fetal_Neuro-29177/masks/CERVIX_T2_HASTE_with_prescan_ON-CERVIX_T2_HASTE_with_prescan_ON-425455_mask.nii -template nuc/CERVIX_T2_HASTE_with_prescan_ON-CERVIX_T2_HASTE_with_prescan_ON-425455_brain.nii -default_thickness 3.0 -resolution 0.5 -svr_only -structural'
+
+# Review
+Junshen tool의 세부 옵션이나 내용은 아래 링크를 참고하시면 되겠습니다.
+(https://nesvor.readthedocs.io/en/latest/index.html)
+
+이번 같은 경우는 아래에 feltal body/uterus reconstruction 실험에 사용한 파라미터를 이용해서 돌려보면 될 것 같습니다. https://nesvor.readthedocs.io/en/latest/quick-start.html
+Fetal brain에서 사용할 때와 의 차이는, Junshen tool에서 디폴트 registration 방식SVoRT은 fetal brain에 대해서만 적용 가능하다고 나와있어서 (https://nesvor.readthedocs.io/en/latest/commands/register.html ), 위의 fetal body/uterus reconstruction에서는 SVoRT대신 stack-to-stack rigid registration을 사용합니다.
+(이부분이 아래 얘기하신 non-rigid, rigid 옵션 관련 내용인듯 합니다)
+
+그래서 가이드(https://nesvor.readthedocs.io/en/latest/quick-start.html ) 참고하셔서, fetal body/uterus용 세팅으로 돌리면 될 것 같습니다
+ 
+# Review2
+왜 deformable 옵션을 사용하게 되는지에 대한 이유
+>> 
+Deformable Slice-to-Volume Registration (DSVR) 방법을 사용하는 이유는, 
+It allows the reconstruction of high-resolution 3D volumes from multiple stacks of slices affected by non-rigid motion. DSVR reconstructed 3D fetal body volumes are characterized by well-defined features and texture of the spine, heart, and abdominal organs. Therefore, DSVR extends the application of slice-to-volume reconstruction to the fetal body and placenta.
+즉, 태아가 스캔 동안 움직임으로 인해 non-rigid movements가 발생하면, 상당항 이미지 왜곡을 일으킬 수 있고, 정확한 reconstruction에 분석에 어려움을 겪을 수 있는데, 일반적인  SVR method는 motion correction of fetal brain that undergoes only rigid transofrmation이므로, the issues of misregistartions due to deformable motion에는 취약하기 때문입니다. 
+
+apptainer exec --nv "/neuro/labs/grantlab/research/Apptainer/nesvor:v0.6.0rc2.sif" nesvor reconstruct --input-stacks ${file}/*.nii --output-volume ${file}/recon_junshen/recon.nii --output-resolution 0.75 --svort-version v2
+이 스크립트에서 rigid registration: "--svort-version v2"대신 non-rigid otion: "--deformable"을 변경
+
+# Comments
+Rigid movement는 돌덩어리 같이.. 쉐입 자체에 왜곡이 없는 물체의 움직임인데..
+뇌는 돌덩이는 아니어도 하나의 덩어리로서 쉐입의 변형이 많진 않죠.
+근데 태아의 신체는,,복부도 움직이면서 구부러지고..또 엄마가 숨을 쉬다보면
+전체적으로 태반이나 몸에 non-rigid형식의 움직임이 발생해서.. 그런 것들을 잡아줄 수 있는
+이미지 registration이 필요합니다.
