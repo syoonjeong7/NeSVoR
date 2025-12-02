@@ -5,6 +5,7 @@ apptainer exec --nv "/neuro/labs/grantlab/research/Apptainer/nesvor:v0.6.0rc2.si
   --output-resolution 0.5 \
   --thickness 2.2 \
   --svort-version v2
+  --segmentation
 
 >> pip install monai
 >> pip install --upgrade nibabel
